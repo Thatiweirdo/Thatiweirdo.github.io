@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+
+    <head>
+    <title>Simple hex converter</title>
+    	
+        <script>
+         window.onerror = function ( message, url, line, col ) {
+      console.log( "Error: " + message + "\nURL: " + url + "\nLine: " + line + "\nColumn: " + col );
+      return true;
+         };
+         function color_info() {
+
+              var hex = document.getElementById("color_select").value;
+              var r = hex.substr(1, 2);
+              var g = hex.substr(3, 2);
+              var b = hex.substr(5, 2);
+
+              r = parseInt( r, 16 );
+              g = parseInt( g, 16 );
+              b = parseInt( b, 16 );
+
+              var rgb = r + ", " + g + ", " + b;
+
+              document.getElementById("colorhex").innerHTML = hex;
+              document.getElementById("colorrgb").innerHTML = rgb;
+}
+		 function toHex() {
+       var dec = document.getElementById("dec").value;
+       document.getElementById("hex").value = parseInt( dec, 10 ).toString( 16 );
+}
+
+function toDec() {
+       var hex = document.getElementById("hex").value;
+       document.getElementById("dec").value = parseInt( hex, 16 );
+}
+         
+     
+        </script>
+        
+    </head>
+   
+    <body>
+    	<h>Selector</h><br>
+    <input type="color" id="color_select"><br>
+<input type="button" value="Enter" onclick="color_info()"><br>
+
+<span id="colorhex">none</span><br>
+<span id="colorrgb">none</span><br>
+
+<h>Converter</h><br>
+<label for="dec">Decimal value: </label>
+<input type="text" id="dec" onchange="toHex()"><br>
+
+<label for="hex">Hexadecimal value: </label>
+<input type="text" id="hex" onchange="toDec()"><br>
+    	
+    </body>
+
+</html>
